@@ -1,0 +1,49 @@
+---
+const experiences = [
+  {
+    role: 'Practicante de Ingeniería de Sistemas',
+    company: 'Canvia',
+    period: 'Mar 2026 - Actualidad',
+    description:
+      'Apoyo en la gestión de incidencias y requerimientos tecnológicos, asegurando el seguimiento de casos y el cumplimiento de acuerdos de nivel de servicio. Superviso canales de comunicación para identificar eventos que puedan afectar las operaciones, coordino con equipos de soporte especializados y colaboro en la documentación de procesos para fortalecer la base de conocimientos del área.',
+  },
+  {
+    role: 'Practicante de Desarrollo de Software',
+    company: 'MedCorp SAC',
+    period: 'Abr 2025 - Jul 2025',
+    description:
+      'Desarrollé sistemas web internos orientados a la automatización de procesos operativos, incluyendo una plataforma para la gestión de visitas profesionales y una aplicación para el control del banco de horas del personal. Participé en funcionalidades de autenticación, gestión de usuarios, reportes, almacenamiento de evidencias y bases de datos, usando tecnologías como Flask, MySQL, Google Sheets, Google Drive y Power BI.',
+  },
+];
+---
+
+<section class="experience-section" aria-labelledby="experience-title">
+  <div class="section-heading">
+    <span class="section-heading__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M9 7V5.8C9 4.8 9.8 4 10.8 4h2.4C14.2 4 15 4.8 15 5.8V7" />
+        <path d="M4.8 7h14.4c1 0 1.8.8 1.8 1.8v8.4c0 1-.8 1.8-1.8 1.8H4.8c-1 0-1.8-.8-1.8-1.8V8.8C3 7.8 3.8 7 4.8 7Z" />
+        <path d="M3 11.2c2.6 1.4 5.6 2.1 9 2.1s6.4-.7 9-2.1" />
+      </svg>
+    </span>
+    <h2 id="experience-title">Experiencia laboral</h2>
+  </div>
+
+  <div class="experience-timeline">
+    {
+      experiences.map((item) => (
+        <article class="experience-item">
+          <div class="experience-item__meta">
+            <h3>{item.role}</h3>
+            <p>{item.company}</p>
+            <span>{item.period}</span>
+          </div>
+
+          <p class="experience-item__description">
+            {item.description}
+          </p>
+        </article>
+      ))
+    }
+  </div>
+</section>

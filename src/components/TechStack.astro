@@ -1,0 +1,40 @@
+---
+const tools = [
+  { name: 'Astro', mark: 'A', tone: 'orange' },
+  { name: 'React', mark: 'R', tone: 'blue' },
+  { name: 'JavaScript', mark: 'JS', tone: 'yellow' },
+  { name: 'TypeScript', mark: 'TS', tone: 'blue' },
+  { name: 'Python', mark: 'PY', tone: 'green' },
+  { name: 'Pandas', mark: 'PD', tone: 'green' },
+  { name: 'Tailwind CSS', mark: 'TW', tone: 'cyan' },
+  { name: 'GitHub', mark: 'GH', tone: 'neutral' },
+  { name: 'Figma', mark: 'FG', tone: 'pink' },
+];
+---
+
+<section class="tech-section" aria-labelledby="tech-title">
+  <div class="section-heading">
+    <span class="section-heading__icon tech-heading-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M6 9h12" />
+        <path d="M6 15h12" />
+        <path d="M9 3 7 21" />
+        <path d="m17 3-2 18" />
+      </svg>
+    </span>
+    <h2 id="tech-title">Tecnologías</h2>
+  </div>
+
+  <div class="tech-grid" aria-label="Herramientas principales">
+    {
+      tools.map((tool) => (
+        <article class:list={['tech-card', `tech-card--${tool.tone}`]}>
+          <div class="tech-logo" aria-hidden="true">
+            <span>{tool.mark}</span>
+          </div>
+          <h3>{tool.name}</h3>
+        </article>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,94 @@
+---
+const navItems = [
+  { label: 'Experiencia', href: '#experiencia' },
+  { label: 'Proyectos', href: '#proyectos' },
+  { label: 'Stack', href: '#stack' },
+  { label: 'Sobre mi', href: '#sobre-mi' },
+];
+---
+
+<header class="site-header" data-site-header>
+
+  <nav class="desktop-nav" aria-label="Navegacion principal">
+    {
+      navItems.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))
+    }
+  </nav>
+
+  <div class="header-actions">
+    <a class="header-link" href="/cv.pdf" aria-label="Ver CV de Samuel Huaccha">
+      CV
+    </a>
+    <a class="header-button" href="#contacto">
+      Contacto
+    </a>
+  </div>
+
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Abrir menu de navegacion"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+    data-menu-toggle
+  >
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </button>
+
+  <nav id="mobile-menu" class="mobile-nav" aria-label="Navegacion movil" data-mobile-menu hidden>
+    {
+      navItems.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))
+    }
+    <a href="/cv.pdf" aria-label="Ver CV de Samuel Huaccha">CV</a>
+    <a class="mobile-nav__button" href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<script>
+  const menuToggle = document.querySelector('[data-menu-toggle]');
+  const mobileMenu = document.querySelector('[data-mobile-menu]');
+  const siteHeader = document.querySelector('[data-site-header]');
+  const heroSection = document.querySelector('#inicio');
+
+  if (menuToggle instanceof HTMLButtonElement && mobileMenu instanceof HTMLElement) {
+    const closeMenu = () => {
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Abrir menu de navegacion');
+      mobileMenu.hidden = true;
+    };
+
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+
+      menuToggle.setAttribute('aria-expanded', String(!isExpanded));
+      menuToggle.setAttribute(
+        'aria-label',
+        isExpanded ? 'Abrir menu de navegacion' : 'Cerrar menu de navegacion',
+      );
+      mobileMenu.hidden = isExpanded;
+    });
+
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  if (siteHeader instanceof HTMLElement && heroSection instanceof HTMLElement) {
+    const setHeaderMode = () => {
+      const heroBottom = heroSection.getBoundingClientRect().bottom;
+      const headerHeight = siteHeader.offsetHeight;
+      const isPastHero = heroBottom <= headerHeight;
+
+      siteHeader.classList.toggle('is-past-hero', isPastHero);
+    };
+
+    setHeaderMode();
+    window.addEventListener('scroll', setHeaderMode, { passive: true });
+    window.addEventListener('resize', setHeaderMode);
+  }
+</script>

@@ -1,0 +1,108 @@
+---
+const projects = [
+  {
+    title: 'Aplicación móvil para el control de asistencia y calificaciones',
+    description:
+      'Aplicación móvil para docentes que automatiza el control de asistencia, gestión de calificaciones, generación de reportes y visualización de estadísticas académicas en tiempo real.',
+    tags: ['Android', 'Kotlin', 'Jetpack Compose', 'Firebase'],
+    codeUrl: '#',
+    previewUrl: '#',
+    variant: 'data',
+  },
+  {
+    title: 'Sistema web para la predicción de Diabetes Mellitus Tipo 2',
+    description:
+      'Plataforma web basada en Machine Learning que permite estimar el riesgo de diabetes tipo 2 a partir de parámetros clínicos. El sistema integra un modelo Random Forest, dashboards interactivos, visualización de tendencias y funcionalidades para el análisis de predicciones, ofreciendo una experiencia clara para la interpretación de resultados.',
+    tags: ['React', 'Flask', 'Tailwind CSS', 'scikit-learn', 'PostgreSQL'],
+    codeUrl: '#',
+    previewUrl: '#',
+    variant: 'portfolio',
+  },
+  {
+    title: 'Aplicación móvil para la reserva de habitaciones en Hotel Boulevard',
+    description:
+      'Aplicación móvil diseñada para modernizar el proceso de reserva de habitaciones de un hotel. Permite a los usuarios consultar disponibilidad, registrar sus datos y confirmar reservas de manera rápida, manteniendo la información centralizada mediante autenticación y sincronización en la nube.',
+    tags: ['Kotlin', 'Android', 'Firebase'],
+    codeUrl: '#',
+    previewUrl: '#',
+    variant: 'portfolio',
+  },
+];
+---
+
+<section class="projects-section" aria-labelledby="projects-title">
+  <div class="section-heading">
+    <span class="section-heading__icon projects-heading-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M8 8 4 12l4 4" />
+        <path d="M16 8l4 4-4 4" />
+        <path d="m14 5-4 14" />
+      </svg>
+    </span>
+    <h2 id="projects-title">Proyectos</h2>
+  </div>
+
+  <div class="projects-list">
+    {
+      projects.map((project) => (
+        <article class="project-card">
+          <div class:list={['project-preview', `project-preview--${project.variant}`]} aria-hidden="true">
+            <div class="project-browser">
+              <div class="project-browser__top">
+                <span></span>
+                <span></span>
+                <span></span>
+                <div></div>
+              </div>
+
+              <div class="project-browser__content">
+                <div class="project-sidebar"></div>
+                <div class="project-grid">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-info">
+            <h3>{project.title}</h3>
+
+            <div class="project-tags" aria-label="Tecnologias usadas">
+              {project.tags.map((tag) => <span>{tag}</span>)}
+            </div>
+
+            <p>{project.description}</p>
+
+            <div class="project-actions">
+              <a href={project.codeUrl} aria-label={`Ver codigo de ${project.title}`}>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M8 8 4 12l4 4" />
+                  <path d="M16 8l4 4-4 4" />
+                  <path d="m14 5-4 14" />
+                </svg>
+                Code
+              </a>
+              <a href={project.previewUrl} aria-label={`Ver preview de ${project.title}`}>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7 17 17 7" />
+                  <path d="M9 7h8v8" />
+                  <path d="M5 5h4" />
+                  <path d="M5 5v14h14v-4" />
+                </svg>
+                Preview
+              </a>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>

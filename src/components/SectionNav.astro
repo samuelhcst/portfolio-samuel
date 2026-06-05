@@ -1,0 +1,78 @@
+---
+const sections = [
+  { number: '01', label: 'Experiencia', href: '#experiencia' },
+  { number: '02', label: 'Proyectos', href: '#proyectos' },
+  { number: '03', label: 'Stack', href: '#stack' },
+  { number: '04', label: 'Sobre mi', href: '#sobre-mi' },
+];
+---
+
+<aside class="side-nav hidden lg:block sticky top-28 self-start h-fit w-[250px]" aria-label="Navegacion por secciones">
+  <nav class="side-nav__links">
+    {
+      sections.map((section, index) => (
+        <a class:list={['side-nav__link', { 'is-active': index === 0 }]} href={section.href}>
+          <span>{section.number}</span>
+          <strong>{section.label}</strong>
+        </a>
+      ))
+    }
+  </nav>
+
+  <div class="side-nav__dots" aria-hidden="true"></div>
+</aside>
+
+<script>
+  const navLinks = [...document.querySelectorAll('.side-nav__link')];
+  const sectionTargets = navLinks
+    .map((link) => {
+      const href = link.getAttribute('href');
+      const section = href ? document.querySelector(href) : null;
+
+      return { href, link, section };
+    })
+    .filter((item) => item.href && item.section);
+
+  const setActiveLink = (hash) => {
+    if (!hash) return;
+
+    navLinks.forEach((link) => {
+      link.classList.toggle('is-active', link.getAttribute('href') === hash);
+    });
+  };
+
+  const setActiveSectionByScroll = () => {
+    const activationLine = window.innerHeight * 0.35;
+    let currentHash = sectionTargets[0]?.href;
+
+    sectionTargets.forEach(({ href, section }) => {
+      const rect = section.getBoundingClientRect();
+
+      if (rect.top <= activationLine && rect.bottom > activationLine) {
+        currentHash = href;
+      }
+    });
+
+    if (currentHash) setActiveLink(currentHash);
+  };
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      const hash = link.getAttribute('href');
+      if (hash) setActiveLink(hash);
+    });
+  });
+
+  window.addEventListener('hashchange', () => {
+    if (window.location.hash) setActiveLink(window.location.hash);
+  });
+
+  if (window.location.hash) {
+    setActiveLink(window.location.hash);
+  } else {
+    setActiveSectionByScroll();
+  }
+
+  window.addEventListener('scroll', setActiveSectionByScroll, { passive: true });
+  window.addEventListener('resize', setActiveSectionByScroll);
+</script>

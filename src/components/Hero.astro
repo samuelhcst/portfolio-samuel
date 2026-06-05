@@ -1,0 +1,84 @@
+---
+import DotField from '@/components/DotField.jsx';
+
+const links = {
+  linkedin: 'https://www.linkedin.com/in/samuel-huaccha/',
+  github: 'https://github.com/samuelhcst',
+};
+---
+
+<section class="hero-section" id="inicio" aria-labelledby="hero-title">
+  <div class="hero-content">
+    <div class="hero-profile">
+      <div class="hero-photo">
+        <img
+          src="/images/profile.png"
+          alt="Foto de Samuel Huaccha"
+          width="96"
+          height="96"
+          loading="eager"
+          onerror="this.hidden = true"
+        />
+        <span>SH</span>
+      </div>
+
+      <a
+        class="availability-badge"
+        href={links.linkedin}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Ver LinkedIn de Samuel Huaccha"
+      >
+        <span aria-hidden="true"></span>
+        Disponible para Trabajar
+      </a>
+    </div>
+
+    <p class="hero-description">
+      Soy <strong class="hero-name">Samuel</strong>, estudiante de
+      <span>Ingeniería de Sistemas Computacionales</span> con experiencia
+      en <span>desarrollo web</span>, <span>automatización de procesos</span> y
+      <span>Ciencia de Datos</span>.
+    </p>
+
+    <div class="hero-actions" aria-label="Acciones principales">
+      <a class="hero-button hero-button--primary" href="#contacto">
+        <span class="hero-button__icon" style="--icon: url('/logos/gmail.svg')" aria-hidden="true"></span>
+        <span>Contáctame</span>
+      </a>
+      <a
+        class="hero-button hero-button--secondary"
+        href={links.linkedin}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Ver LinkedIn de Samuel Huaccha"
+      >
+        <span class="hero-button__icon" style="--icon: url('/logos/linkedin.svg')" aria-hidden="true"></span>
+        <span>LinkedIn</span>
+      </a>
+      <a
+        class="hero-button hero-button--secondary"
+        href={links.github}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Ver GitHub de Samuel Huaccha"
+      >
+        <span class="hero-button__icon" style="--icon: url('/logos/github_light.svg')" aria-hidden="true"></span>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </div>
+
+  <DotField
+    client:visible
+    className="hero-dot-field"
+    aria-hidden="true"
+    dotRadius={3}
+    dotSpacing={16}
+    cursorRadius={320}
+    bulgeStrength={38}
+    gradientFrom="rgba(255, 255, 255, 0.6)"
+    gradientTo="rgba(255, 255, 255, 0.4)"
+    glowColor="rgba(0, 0, 0, 0.3)"
+  />
+</section>
