@@ -1,5 +1,6 @@
 ---
 import DotField from '@/components/DotField.jsx';
+import BorderGlow from '@/components/BorderGlow.jsx';
 
 const links = {
   linkedin: 'https://www.linkedin.com/in/samuel-huaccha/',
@@ -22,16 +23,34 @@ const links = {
         <span>SH</span>
       </div>
 
-      <a
-        class="availability-badge"
-        href={links.linkedin}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Ver LinkedIn de Samuel Huaccha"
+      <BorderGlow
+        client:load
+        className="availability-glow"
+        edgeSensitivity={14}
+        borderRadius={999}
+        borderWidth={1.5}
+        idleBorderOpacity={0.52}
+        glowColor="220 96 72"
+        backgroundColor="rgba(8, 8, 8, 0.92)"
+        glowRadius={16}
+        glowIntensity={0.42}
+        coneSpread={13}
+        rotateOnHover
+        rotationSpeed={2}
+        colors={['#4285f4', '#ea4335', '#fbbc04', '#34a853']}
+        fillOpacity={0.12}
       >
-        <span aria-hidden="true"></span>
-        Disponible para Trabajar
-      </a>
+        <a
+          class="availability-badge"
+          href={links.linkedin}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Ver LinkedIn de Samuel Huaccha"
+        >
+          <span aria-hidden="true"></span>
+          Disponible para Trabajar
+        </a>
+      </BorderGlow>
     </div>
 
     <p class="hero-description">
