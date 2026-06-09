@@ -190,7 +190,9 @@ a {
 }
 
 .header-button:hover {
-  background: #ff5a32;
+  background: var(--color-bg-soft);
+  color: var(--color-text);
+  border-color: var(--color-dot);
 }
 
 .menu-toggle {
@@ -413,8 +415,8 @@ a {
 .hero-dot-field {
   justify-self: stretch;
   width: 100%;
-  min-height: min(68vh, 620px);
-  max-height: 80vh;
+  min-height: min(82vh, 760px);
+  max-height: 88vh;
   overflow: hidden;
   margin-top: -10vh;
   border-left: 1px solid rgba(247, 244, 238, 0.08);
