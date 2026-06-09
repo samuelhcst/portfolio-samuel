@@ -1,40 +1,47 @@
 ---
 const tools = [
-  { name: 'Astro', mark: 'A', tone: 'orange' },
-  { name: 'React', mark: 'R', tone: 'blue' },
-  { name: 'JavaScript', mark: 'JS', tone: 'yellow' },
-  { name: 'TypeScript', mark: 'TS', tone: 'blue' },
-  { name: 'Python', mark: 'PY', tone: 'green' },
-  { name: 'Pandas', mark: 'PD', tone: 'green' },
-  { name: 'Tailwind CSS', mark: 'TW', tone: 'cyan' },
-  { name: 'GitHub', mark: 'GH', tone: 'neutral' },
-  { name: 'Figma', mark: 'FG', tone: 'pink' },
+  { name: 'React', icon: '/logos/react_dark.svg', url: 'https://reactjs.org/' },
+  { name: 'Astro', icon: '/logos/astro-icon-dark.svg', url: 'https://astro.build/' },
+  { name: 'Tailwind CSS', icon: '/logos/tailwindcss.svg', url: 'https://tailwindcss.com/' },
+  { name: 'TypeScript', icon: '/logos/typescript.svg', url: 'https://www.typescriptlang.org/' },
+  { name: 'JavaScript', icon: '/logos/javascript.svg', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+  { name: 'Python', icon: '/logos/python.svg', url: 'https://www.python.org/' },
+  { name: 'Flask', icon: '/logos/flask-dark.svg', url: 'https://flask.palletsprojects.com/' },
+  { name: 'Node.js', icon: '/logos/nodejs.svg', url: 'https://nodejs.org/' },
+  { name: 'Kotlin', icon: '/logos/kotlin.svg', url: 'https://kotlinlang.org/' },
+  { name: 'Firebase', icon: '/logos/firebase.svg', url: 'https://firebase.google.com/' },
+  { name: 'PostgreSQL', icon: '/logos/postgresql.svg', url: 'https://www.postgresql.org/' },
+  { name: 'MySQL', icon: '/logos/mysql-icon-dark.svg', url: 'https://www.mysql.com/' },
+  { name: 'C#', icon: '/logos/csharp.svg', url: 'https://docs.microsoft.com/en-us/dotnet/csharp/' },
+  { name: 'GitHub', icon: '/logos/github_dark.svg', url: 'https://github.com/' },
+  { name: 'AWS', icon: '/logos/aws_dark.svg', url: 'https://aws.amazon.com/' },
+  { name: 'Azure', icon: '/logos/azure.svg', url: 'https://azure.microsoft.com/' },
 ];
 ---
 
 <section class="tech-section" aria-labelledby="tech-title">
   <div class="section-heading">
     <span class="section-heading__icon tech-heading-icon" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none">
-        <path d="M6 9h12" />
-        <path d="M6 15h12" />
-        <path d="M9 3 7 21" />
-        <path d="m17 3-2 18" />
-      </svg>
+      <!-- icono decorativo -->
     </span>
     <h2 id="tech-title">Tecnologías</h2>
   </div>
 
-  <div class="tech-grid" aria-label="Herramientas principales">
+  <div class="tech-icon-grid">
     {
       tools.map((tool) => (
-        <article class:list={['tech-card', `tech-card--${tool.tone}`]}>
-          <div class="tech-logo" aria-hidden="true">
-            <span>{tool.mark}</span>
-          </div>
-          <h3>{tool.name}</h3>
-        </article>
+        <a
+          class="tech-icon-card"
+          href={tool.url}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Abrir sitio oficial de ${tool.name}`}
+          title={tool.name}
+        >
+          <img src={tool.icon} alt="" loading="lazy" />
+        </a>
       ))
     }
   </div>
+  
 </section>

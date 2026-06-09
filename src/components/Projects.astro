@@ -7,7 +7,7 @@ const projects = [
     tags: ['Android', 'Kotlin', 'Jetpack Compose', 'Firebase'],
     codeUrl: '#',
     previewUrl: '#',
-    variant: 'data',
+    img: '/images/projects/project-1.webp',
   },
   {
     title: 'Sistema web para la predicción de Diabetes Mellitus Tipo 2',
@@ -16,7 +16,7 @@ const projects = [
     tags: ['React', 'Flask', 'Tailwind CSS', 'scikit-learn', 'PostgreSQL'],
     codeUrl: '#',
     previewUrl: '#',
-    variant: 'portfolio',
+    img: '/images/projects/project-2.webp',
   },
   {
     title: 'Aplicación móvil para la reserva de habitaciones en Hotel Boulevard',
@@ -25,7 +25,7 @@ const projects = [
     tags: ['Kotlin', 'Android', 'Firebase'],
     codeUrl: '#',
     previewUrl: '#',
-    variant: 'portfolio',
+    img: '/images/projects/project-3.webp',
   },
 ];
 ---
@@ -46,60 +46,20 @@ const projects = [
     {
       projects.map((project) => (
         <article class="project-card">
-          <div class:list={['project-preview', `project-preview--${project.variant}`]} aria-hidden="true">
-            <div class="project-browser">
-              <div class="project-browser__top">
-                <span></span>
-                <span></span>
-                <span></span>
-                <div></div>
-              </div>
-
-              <div class="project-browser__content">
-                <div class="project-sidebar"></div>
-                <div class="project-grid">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-            </div>
+          <div class="project-preview" aria-hidden="true">
+            <img src={project.img} alt={project.title} loading="lazy" />
           </div>
 
           <div class="project-info">
             <h3>{project.title}</h3>
 
-            <div class="project-tags" aria-label="Tecnologias usadas">
+            <div class="project-tags" aria-label="Tecnologías usadas">
               {project.tags.map((tag) => <span>{tag}</span>)}
             </div>
 
             <p>{project.description}</p>
 
-            <div class="project-actions">
-              <a href={project.codeUrl} aria-label={`Ver codigo de ${project.title}`}>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M8 8 4 12l4 4" />
-                  <path d="M16 8l4 4-4 4" />
-                  <path d="m14 5-4 14" />
-                </svg>
-                Code
-              </a>
-              <a href={project.previewUrl} aria-label={`Ver preview de ${project.title}`}>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M7 17 17 7" />
-                  <path d="M9 7h8v8" />
-                  <path d="M5 5h4" />
-                  <path d="M5 5v14h14v-4" />
-                </svg>
-                Preview
-              </a>
-            </div>
+            
           </div>
         </article>
       ))

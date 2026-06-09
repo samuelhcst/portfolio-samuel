@@ -2,12 +2,12 @@
 const sections = [
   { number: '01', label: 'Experiencia', href: '#experiencia' },
   { number: '02', label: 'Proyectos', href: '#proyectos' },
-  { number: '03', label: 'Stack', href: '#stack' },
-  { number: '04', label: 'Sobre mi', href: '#sobre-mi' },
+  { number: '03', label: 'Tecnologías', href: '#stack' },
+  { number: '04', label: 'Sobre mí', href: '#sobre-mi' },
 ];
 ---
 
-<aside class="side-nav hidden lg:block sticky top-28 self-start h-fit w-[250px]" aria-label="Navegacion por secciones">
+<aside class="side-nav hidden lg:block sticky top-10 self-start h-fit w-62.5" aria-label="Navegación por secciones">
   <nav class="side-nav__links">
     {
       sections.map((section, index) => (
@@ -23,56 +23,64 @@ const sections = [
 </aside>
 
 <script>
-  const navLinks = [...document.querySelectorAll('.side-nav__link')];
-  const sectionTargets = navLinks
-    .map((link) => {
-      const href = link.getAttribute('href');
-      const section = href ? document.querySelector(href) : null;
+  const navLinks = Array.from(
+    document.querySelectorAll<HTMLAnchorElement>('.side-nav__link')
+  );
 
-      return { href, link, section };
-    })
-    .filter((item) => item.href && item.section);
+  const navItems = navLinks.flatMap((link) => {
+    const href = link.getAttribute('href');
 
-  const setActiveLink = (hash) => {
-    if (!hash) return;
+    if (!href) return [];
 
+    const section = document.querySelector<HTMLElement>(href);
+
+    if (!section) return [];
+
+    return [{ href, section }];
+  });
+
+  const setActiveLink = (href: string) => {
     navLinks.forEach((link) => {
-      link.classList.toggle('is-active', link.getAttribute('href') === hash);
+      link.classList.toggle('is-active', link.getAttribute('href') === href);
     });
   };
 
-  const setActiveSectionByScroll = () => {
-    const activationLine = window.innerHeight * 0.35;
-    let currentHash = sectionTargets[0]?.href;
+  const updateActiveSection = () => {
+    const activationPoint = window.scrollY + window.innerHeight * 0.38;
+    let activeHref = navItems[0]?.href;
 
-    sectionTargets.forEach(({ href, section }) => {
-      const rect = section.getBoundingClientRect();
-
-      if (rect.top <= activationLine && rect.bottom > activationLine) {
-        currentHash = href;
+    navItems.forEach(({ href, section }) => {
+      if (section.offsetTop <= activationPoint) {
+        activeHref = href;
       }
     });
 
-    if (currentHash) setActiveLink(currentHash);
+    if (activeHref) {
+      setActiveLink(activeHref);
+    }
+  };
+
+  let ticking = false;
+
+  const requestActiveSectionUpdate = () => {
+    if (ticking) return;
+
+    ticking = true;
+
+    window.requestAnimationFrame(() => {
+      updateActiveSection();
+      ticking = false;
+    });
   };
 
   navLinks.forEach((link) => {
     link.addEventListener('click', () => {
-      const hash = link.getAttribute('href');
-      if (hash) setActiveLink(hash);
+      const href = link.getAttribute('href');
+      if (href) setActiveLink(href);
     });
   });
 
-  window.addEventListener('hashchange', () => {
-    if (window.location.hash) setActiveLink(window.location.hash);
-  });
-
-  if (window.location.hash) {
-    setActiveLink(window.location.hash);
-  } else {
-    setActiveSectionByScroll();
-  }
-
-  window.addEventListener('scroll', setActiveSectionByScroll, { passive: true });
-  window.addEventListener('resize', setActiveSectionByScroll);
+  updateActiveSection();
+  window.addEventListener('scroll', requestActiveSectionUpdate, { passive: true });
+  window.addEventListener('resize', requestActiveSectionUpdate);
 </script>

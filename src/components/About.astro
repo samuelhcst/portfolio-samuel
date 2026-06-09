@@ -1,5 +1,5 @@
 ---
-import PixelTransition from '@/components/PixelTransition.jsx';
+import AboutPhotoTransition from './AboutPhotoTransition.jsx';
 ---
 
 <section class="about-section" aria-labelledby="about-title">
@@ -42,10 +42,11 @@ import PixelTransition from '@/components/PixelTransition.jsx';
 
     <div class="about-photo-card">
       <div class="about-photo-frame">
+        <AboutPhotoTransition client:visible />
         
       </div>
       <div class="about-photo-caption">
-        <span>Samuel Huaccha</span>
+        <span>Ingeniero de Sistemas</span>
       </div>
     </div>
   </div>
