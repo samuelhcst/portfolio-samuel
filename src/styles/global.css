@@ -656,7 +656,7 @@ h1 {
 }
 
 .content-placeholder {
-  scroll-margin-top: calc(var(--header-height) + 24px);
+  scroll-margin-top: 32px;
   padding-top: 12px;
   border-top: 1px solid rgba(247, 244, 238, 0.08);
 }
