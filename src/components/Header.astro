@@ -7,9 +7,9 @@ const navItems = [
 ];
 ---
 
-<header class="site-header" data-site-header>
+<header class="sticky top-0 z-20 grid grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center w-full min-h-[var(--header-height)] px-[clamp(16px,3vw,32px)] border-b border-[var(--color-line)] bg-[rgba(7,7,7,0.76)] backdrop-blur-[18px] backdrop-saturate-[140%] transition-all duration-180 ease-out [&.is-past-hero]:relative [&.is-past-hero]:opacity-0 [&.is-past-hero]:invisible [&.is-past-hero]:pointer-events-none [&.is-past-hero]:-translate-y-full" data-site-header>
 
-  <nav class="desktop-nav" aria-label="Navegacion principal">
+  <nav class="hidden md:flex col-start-2 justify-self-center items-center justify-center gap-[clamp(16px,2.4vw,34px)] font-mono text-[0.75rem] font-bold uppercase [&>a]:transition-colors [&>a]:duration-180 [&>a]:ease-out hover:[&>a]:text-[var(--color-accent)]" aria-label="Navegacion principal">
     {
       navItems.map((item) => (
         <a href={item.href}>{item.label}</a>
@@ -17,40 +17,40 @@ const navItems = [
     }
   </nav>
 
-  <div class="header-actions">
+  <div class="hidden md:flex col-start-3 justify-self-end items-center gap-[12px]">
     <a 
-    class="header-link" 
-    href="https://drive.google.com/file/d/1-OJkUjeCAiYs9HMqB_MqY2axqzNtg-9-/view?usp=sharing" 
+    class="inline-flex items-center justify-center min-h-[38px] px-[16px] border border-[rgba(247,244,238,0.34)] rounded-full font-mono text-[0.72rem] font-extrabold uppercase transition-all duration-180 ease-out hover:text-[var(--color-accent)]" 
+    href="https://drive.google.com/file/d/1IQGp38TZ7mjA1Cyh1nz5KKnx3nnBViVB/view?usp=sharing" 
     target="_blank" 
     rel="noreferrer"
     aria-label="Ver CV de Samuel Huaccha">
       CV
     </a>
-    <a class="header-button" href="#contacto">
+    <a class="inline-flex items-center justify-center min-h-[38px] px-[16px] text-[#100804] border border-[var(--color-accent)] bg-[var(--color-accent)] rounded-full font-mono text-[0.72rem] font-extrabold uppercase transition-all duration-180 ease-out hover:bg-[var(--color-bg-soft)] hover:text-[var(--color-text)] hover:border-[var(--color-dot)]" href="#contacto">
       Contacto
     </a>
   </div>
 
   <button
-    class="menu-toggle"
+    class="md:hidden col-start-2 justify-self-end block w-[42px] h-[38px] p-0 border border-[rgba(247,244,238,0.24)] rounded-full bg-[rgba(247,244,238,0.04)] cursor-pointer transition-all duration-180 ease-out [&[aria-expanded=true]]:text-[#100804] [&[aria-expanded=true]]:border-[var(--color-accent)] [&[aria-expanded=true]]:bg-[var(--color-accent)] group"
     type="button"
     aria-label="Abrir menu de navegacion"
     aria-expanded="false"
     aria-controls="mobile-menu"
     data-menu-toggle
   >
-    <span aria-hidden="true"></span>
-    <span aria-hidden="true"></span>
+    <span class="block w-[16px] h-[1px] mx-auto bg-[var(--color-text)] transition-colors duration-180 group-aria-expanded:bg-[#100804]" aria-hidden="true"></span>
+    <span class="block w-[16px] h-[1px] mx-auto bg-[var(--color-text)] mt-[6px] transition-colors duration-180 group-aria-expanded:bg-[#100804]" aria-hidden="true"></span>
   </button>
 
-  <nav id="mobile-menu" class="mobile-nav" aria-label="Navegacion movil" data-mobile-menu hidden>
+  <nav id="mobile-menu" class="absolute top-[calc(100%+1px)] right-[16px] left-[16px] grid gap-[4px] p-[14px] border border-[var(--color-line)] bg-[rgba(10,10,10,0.96)] backdrop-blur-[18px] [&[hidden]]:hidden [&>a]:p-[12px] [&>a]:font-mono [&>a]:text-[0.78rem] [&>a]:font-extrabold [&>a]:uppercase [&>a]:transition-colors [&>a]:duration-180 hover:[&>a]:text-[var(--color-accent)]" aria-label="Navegacion movil" data-mobile-menu hidden>
     {
       navItems.map((item) => (
         <a href={item.href}>{item.label}</a>
       ))
     }
     <a href="/cv.pdf" aria-label="Ver CV de Samuel Huaccha">CV</a>
-    <a class="mobile-nav__button" href="#contacto">Contacto</a>
+    <a class="text-[#100804] bg-[var(--color-accent)] hover:!text-[#100804] hover:opacity-90" href="#contacto">Contacto</a>
   </nav>
 </header>
 

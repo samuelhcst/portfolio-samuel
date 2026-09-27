@@ -17,29 +17,29 @@ const experiences = [
 ];
 ---
 
-<section class="experience-section" aria-labelledby="experience-title">
-  <div class="section-heading">
-    <span class="section-heading__icon" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none">
+<section class="max-w-[980px]" aria-labelledby="experience-title">
+  <div class="flex items-center gap-[10px] md:gap-[14px] mb-[32px] md:mb-[60px]">
+    <span class="inline-flex items-center justify-center w-[26px] h-[26px] md:w-[32px] md:h-[32px]" aria-hidden="true">
+      <svg class="w-[24px] h-[24px] md:w-[30px] md:h-[30px] stroke-[var(--color-text)] stroke-2 fill-none" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
         <path d="M9 7V5.8C9 4.8 9.8 4 10.8 4h2.4C14.2 4 15 4.8 15 5.8V7" />
         <path d="M4.8 7h14.4c1 0 1.8.8 1.8 1.8v8.4c0 1-.8 1.8-1.8 1.8H4.8c-1 0-1.8-.8-1.8-1.8V8.8C3 7.8 3.8 7 4.8 7Z" />
         <path d="M3 11.2c2.6 1.4 5.6 2.1 9 2.1s6.4-.7 9-2.1" />
       </svg>
     </span>
-    <h2 id="experience-title">Experiencia laboral</h2>
+    <h2 class="m-0 text-[1.6rem] md:text-[clamp(2rem,4vw,3.3rem)] font-extrabold leading-none" id="experience-title">Experiencia laboral</h2>
   </div>
 
-  <div class="experience-timeline">
+  <div class="relative grid gap-[42px] md:gap-[72px] pl-[28px] md:pl-[46px] before:absolute before:top-[8px] before:bottom-[8px] before:left-[6px] md:before:left-[12px] before:w-[1px] before:bg-[rgba(247,244,238,0.22)]">
     {
       experiences.map((item) => (
-        <article class="experience-item">
-          <div class="experience-item__meta">
-            <h3>{item.role}</h3>
-            <p>{item.company}</p>
-            <span>{item.period}</span>
+        <article class="relative grid grid-cols-1 lg:grid-cols-[minmax(220px,0.78fr)_minmax(280px,1.2fr)] gap-[14px] lg:gap-[clamp(36px,7vw,96px)] before:absolute before:top-[10px] before:left-[-25px] md:before:left-[-39px] before:w-[9px] before:h-[9px] md:before:w-[11px] md:before:h-[11px] before:rounded-full before:bg-[var(--color-accent)] before:shadow-[0_0_0_5px_rgba(255,61,18,0.12)] md:before:shadow-[0_0_0_6px_rgba(255,61,18,0.12)]">
+          <div>
+            <h3 class="m-0 mb-[4px] md:mb-[6px] text-[var(--color-accent)] text-[1.05rem] md:text-[clamp(1.15rem,2vw,1.55rem)] font-extrabold leading-[1.15] md:leading-[1.08]">{item.role}</h3>
+            <p class="m-0 mb-[4px] md:mb-[6px] text-[var(--color-text)] text-[1rem] md:text-[1.15rem] font-extrabold leading-[1.2]">{item.company}</p>
+            <span class="text-[var(--color-muted)] text-[0.85rem] md:text-[0.95rem] font-semibold">{item.period}</span>
           </div>
 
-          <p class="experience-item__description">
+          <p class="m-0 text-[rgba(247,244,238,0.86)] text-[0.95rem] md:text-[clamp(1rem,1.6vw,1.2rem)] font-medium leading-[1.5] md:leading-[1.45]">
             {item.description}
           </p>
         </article>

@@ -39,36 +39,34 @@ const projects = [
 ];
 ---
 
-<section class="projects-section" aria-labelledby="projects-title">
-  <div class="section-heading">
-    <span class="section-heading__icon projects-heading-icon" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none">
+<section class="max-w-[1060px]" aria-labelledby="projects-title">
+  <div class="flex items-center gap-[10px] md:gap-[14px] mb-[32px] md:mb-[60px]">
+    <span class="inline-flex items-center justify-center w-[26px] h-[26px] md:w-[32px] md:h-[32px]" aria-hidden="true">
+      <svg class="w-[24px] h-[24px] md:w-[30px] md:h-[30px] stroke-[var(--color-text)] stroke-2 fill-none stroke-[2.2px]" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
         <path d="M8 8 4 12l4 4" />
         <path d="M16 8l4 4-4 4" />
         <path d="m14 5-4 14" />
       </svg>
     </span>
-    <h2 id="projects-title">Proyectos</h2>
+    <h2 class="m-0 text-[1.6rem] md:text-[clamp(2rem,4vw,3.3rem)] font-extrabold leading-none" id="projects-title">Proyectos</h2>
   </div>
 
-  <div class="projects-list">
+  <div class="grid gap-[42px] md:gap-[64px]">
     {
       projects.map((project) => (
-        <article class="project-card">
-          <div class="project-preview" aria-hidden="true">
-            <img src={project.img} alt={project.title} loading="lazy" />
+        <article class="grid grid-cols-1 lg:grid-cols-[minmax(280px,0.95fr)_minmax(280px,1fr)] gap-[20px] md:gap-[clamp(32px,5vw,64px)] items-center group/card">
+          <div class="relative grid place-items-center overflow-hidden aspect-video min-h-[180px] md:min-h-0 border border-[rgba(247,244,238,0.12)] rounded-[8px] md:rounded-[10px] transition-colors duration-180 hover:border-[var(--color-accent)] after:absolute after:inset-0 after:content-[''] after:bg-[radial-gradient(rgba(247,244,238,0.18)_1px,transparent_1px)] after:bg-[length:12px_12px] after:opacity-22 after:pointer-events-none group" aria-hidden="true">
+            <img class="relative z-[1] block w-full h-full object-cover object-center scale-105 transition-all duration-260 ease-out group-hover:scale-100" src={project.img} alt={project.title} loading="lazy" />
           </div>
 
-          <div class="project-info">
-            <h3>{project.title}</h3>
+          <div>
+            <h3 class="max-w-[560px] m-0 mb-[10px] md:mb-[16px] text-[1.25rem] md:text-[clamp(1.55rem,3vw,2.35rem)] font-semibold leading-[1.15] md:leading-[1.12]">{project.title}</h3>
 
-            <div class="project-tags" aria-label="Tecnologías usadas">
-              {project.tags.map((tag) => <span>{tag}</span>)}
+            <div class="flex flex-wrap gap-[6px] md:gap-[8px] mb-[14px] md:mb-[18px]" aria-label="Tecnologías usadas">
+              {project.tags.map((tag) => <span class="inline-flex items-center min-h-[22px] md:min-h-[24px] px-[8px] md:px-[10px] rounded-full bg-[rgba(255,61,18,0.13)] even:bg-[rgba(43,130,255,0.2)] text-[var(--color-text)] font-mono text-[0.68rem] md:text-[0.72rem] font-extrabold">{tag}</span>)}
             </div>
 
-            <p>{project.description}</p>
-
-            
+            <p class="max-w-[590px] m-0 text-[var(--color-muted)] text-[0.92rem] md:text-[clamp(1rem,1.5vw,1.17rem)] font-semibold leading-[1.48] md:leading-[1.42]">{project.description}</p>
           </div>
         </article>
       ))

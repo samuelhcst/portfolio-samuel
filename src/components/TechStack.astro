@@ -19,26 +19,26 @@ const tools = [
 ];
 ---
 
-<section class="tech-section" aria-labelledby="tech-title">
-  <div class="section-heading">
-    <span class="section-heading__icon tech-heading-icon" aria-hidden="true">
+<section class="max-w-[1060px]" aria-labelledby="tech-title">
+  <div class="flex items-center gap-[10px] md:gap-[14px] mb-[32px] md:mb-[60px]">
+    <span class="inline-flex items-center justify-center w-[26px] h-[26px] md:w-[32px] md:h-[32px]" aria-hidden="true">
       <!-- icono decorativo -->
     </span>
-    <h2 id="tech-title">Tecnologías</h2>
+    <h2 class="m-0 text-[1.6rem] md:text-[clamp(2rem,4vw,3.3rem)] font-extrabold leading-none" id="tech-title">Tecnologías</h2>
   </div>
 
-  <div class="tech-icon-grid">
+  <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 justify-center gap-y-[20px] gap-x-[16px] md:gap-y-[34px] md:gap-x-[36px] w-full max-w-[960px] mx-auto">
     {
       tools.map((tool) => (
         <a
-          class="tech-icon-card"
+          class="grid w-full max-w-[112px] justify-self-center aspect-square place-items-center border border-[rgba(247,244,238,0.06)] rounded-[16px] md:rounded-[24px] bg-[var(--color-surface)] shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_16px_36px_rgba(0,0,0,0.22)] transition-all duration-180 ease-out hover:border-[rgba(255,61,18,0.72)] hover:bg-[oklch(0.269_0_0)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_18px_44px_rgba(255,61,18,0.12)] hover:-translate-y-[4px] focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] focus-visible:outline-offset-4"
           href={tool.url}
           target="_blank"
           rel="noreferrer"
           aria-label={`Abrir sitio oficial de ${tool.name}`}
           title={tool.name}
         >
-          <img src={tool.icon} alt="" loading="lazy" />
+          <img class="w-[38px] h-[38px] md:w-[54px] md:h-[54px] object-contain" src={tool.icon} alt="" loading="lazy" />
         </a>
       ))
     }

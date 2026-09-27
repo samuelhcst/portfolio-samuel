@@ -7,24 +7,27 @@ const sections = [
 ];
 ---
 
-<aside class="side-nav hidden lg:block sticky top-10 self-start h-fit w-62.5" aria-label="Navegación por secciones">
-  <nav class="side-nav__links">
+<aside class="hidden lg:block sticky top-10 self-start h-fit w-[250px] pointer-events-none" aria-label="Navegación por secciones">
+  <nav class="grid gap-[6px] content-start pointer-events-auto">
     {
       sections.map((section, index) => (
-        <a class:list={['side-nav__link', { 'is-active': index === 0 }]} href={section.href}>
-          <span>{section.number}</span>
-          <strong>{section.label}</strong>
+        <a data-nav-link class:list={[
+          'group grid grid-cols-[32px_1fr] items-center w-fit min-h-[28px] px-[8px] text-[var(--color-text)] font-mono text-[0.76rem] font-extrabold uppercase transition-all duration-180 ease-out',
+          { 'is-active': index === 0 }
+        ]} href={section.href}>
+          <span class="inline-flex items-center justify-center w-[24px] min-h-[24px] font-bold transition-colors duration-180 ease-out group-hover:text-[#080808] group-hover:bg-[var(--color-accent)] group-[.is-active]:text-[#080808] group-[.is-active]:bg-[var(--color-text)] group-[.is-active]:group-hover:bg-[var(--color-accent)]">{section.number}</span>
+          <strong class="font-black">{section.label}</strong>
         </a>
       ))
     }
   </nav>
 
-  <div class="side-nav__dots" aria-hidden="true"></div>
+  <div class="mt-[24px] w-[min(100%,230px)] min-h-[77vh] bg-[radial-gradient(rgba(247,244,238,0.52)_1px,transparent_1px)] bg-[length:10px_10px] opacity-65" aria-hidden="true"></div>
 </aside>
 
 <script>
   const navLinks = Array.from(
-    document.querySelectorAll<HTMLAnchorElement>('.side-nav__link')
+    document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]')
   );
 
   const navItems = navLinks.flatMap((link) => {

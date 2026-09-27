@@ -8,10 +8,10 @@ const links = {
 };
 ---
 
-<section class="hero-section" id="inicio" aria-labelledby="hero-title">
-  <div class="hero-content">
-    <div class="hero-profile">
-      <div class="hero-photo">
+<section class="relative grid grid-cols-1 lg:grid-cols-[minmax(0,0.92fr)_minmax(260px,0.58fr)] gap-[24px] md:gap-[32px] lg:gap-[clamp(32px,6vw,96px)] items-center w-[var(--container)] min-h-auto lg:min-h-[calc(100vh-var(--header-height))] mx-auto pt-[40px] md:pt-[52px] lg:pt-[72px] pb-[40px] md:pb-[56px] lg:pb-[72px] before:absolute before:right-[-10vw] before:bottom-[10vh] before:-z-10 before:w-[44vw] before:max-w-[680px] before:aspect-square before:bg-[radial-gradient(circle,rgba(255,61,18,0.14),transparent_68%)]" id="inicio" aria-labelledby="hero-title">
+  <div class="max-w-[860px]">
+    <div class="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-[12px] sm:gap-[14px] mb-[20px] md:mb-[28px]">
+      <div class="relative grid place-items-center overflow-hidden w-[72px] h-[72px] md:w-[96px] md:h-[96px] border-2 border-[var(--color-accent-dark)] rounded-full bg-white text-[var(--color-text)] font-mono text-[0.72rem] md:text-[0.82rem] font-extrabold">
         <img
           src="/images/profile.png"
           alt="Foto de Samuel Huaccha"
@@ -19,13 +19,14 @@ const links = {
           height="96"
           loading="eager"
           onerror="this.hidden = true"
+          class="absolute right-[50%] bottom-[-20%] z-[2] w-auto max-w-none h-[130%] object-contain object-bottom translate-x-[50%]"
         />
-        <span>SH</span>
+        <span class="relative z-[1]">SH</span>
       </div>
 
       <BorderGlow
         client:load
-        className="availability-glow"
+        className="w-fit !rounded-full [&>div:last-child]:overflow-visible [&>div:last-child]:rounded-[inherit]"
         edgeSensitivity={14}
         borderRadius={999}
         borderWidth={1.5}
@@ -41,48 +42,48 @@ const links = {
         fillOpacity={0.12}
       >
         <a
-          class="availability-badge"
+          class="relative inline-flex items-center gap-[8px] md:gap-[10px] min-h-[36px] md:min-h-[42px] px-[12px] md:px-[16px] border-0 rounded-full bg-[rgba(247,244,238,0.035)] text-[var(--color-text)] font-mono text-[0.68rem] md:text-[0.72rem] font-extrabold uppercase transition-all duration-180 hover:text-[var(--color-accent)] hover:bg-[rgba(255,61,18,0.075)] focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] focus-visible:outline-offset-4"
           href={links.linkedin}
           target="_blank"
           rel="noreferrer"
           aria-label="Ver LinkedIn de Samuel Huaccha"
         >
-          <span aria-hidden="true"></span>
+          <span class="w-[7px] h-[7px] md:w-[8px] md:h-[8px] rounded-full bg-[#28d17c] shadow-[0_0_0_4px_rgba(40,209,124,0.12)] md:shadow-[0_0_0_5px_rgba(40,209,124,0.12)]" aria-hidden="true"></span>
           Disponible para Trabajar
         </a>
       </BorderGlow>
     </div>
 
-    <p class="hero-description">
-      Soy <strong class="hero-name">Samuel</strong>, estudiante de
+    <p class="max-w-[760px] mt-0 mb-[24px] md:mb-[36px] text-[var(--color-muted)] text-[1.05rem] md:text-[1.15rem] lg:text-[clamp(1.25rem,2.3vw,2rem)] font-semibold leading-[1.3] md:leading-[1.24] [&>span]:text-[var(--color-text)]">
+      Soy <strong class="text-[var(--color-accent)] font-extrabold">Samuel</strong>, estudiante de
       <span>Ingeniería de Sistemas Computacionales</span> con experiencia
       en <span>desarrollo web</span>, <span>automatización de procesos</span> y
       <span>Ciencia de Datos</span>.
     </p>
 
-    <div class="hero-actions" aria-label="Acciones principales">
-      <a class="hero-button hero-button--primary" href="#contacto">
-        <span class="hero-button__icon" style="--icon: url('/logos/gmail.svg')" aria-hidden="true"></span>
+    <div class="flex flex-col sm:flex-row flex-wrap gap-[10px] sm:gap-[14px]" aria-label="Acciones principales">
+      <a class="group inline-flex items-center justify-center gap-[10px] min-h-[44px] md:min-h-[48px] px-[19px] border border-[rgba(255,61,18,0.82)] rounded-full font-mono text-[0.73rem] md:text-[0.75rem] font-extrabold uppercase relative overflow-hidden transition-all duration-180 ease-out text-[var(--color-text)] bg-[linear-gradient(180deg,rgba(255,61,18,0.16),rgba(255,61,18,0.06))] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_10px_30px_rgba(255,61,18,0.12)] hover:text-[#080808] hover:bg-[#ff5a32] hover:border-[#ff5a32] hover:shadow-[0_18px_44px_rgba(255,61,18,0.3)] hover:-translate-y-[2px] focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] focus-visible:outline-offset-4" href="#contacto">
+        <span class="w-[18px] h-[18px] flex-none bg-current transition-all duration-180 ease-out [mask:var(--icon)_center/contain_no-repeat] [-webkit-mask:var(--icon)_center/contain_no-repeat] group-hover:-translate-y-[1px] group-hover:scale-105" style="--icon: url('/logos/gmail.svg')" aria-hidden="true"></span>
         <span>Contáctame</span>
       </a>
       <a
-        class="hero-button hero-button--secondary"
+        class="group inline-flex items-center justify-center gap-[10px] min-h-[44px] md:min-h-[48px] px-[19px] border border-[rgba(247,244,238,0.22)] rounded-full font-mono text-[0.73rem] md:text-[0.75rem] font-extrabold uppercase relative overflow-hidden transition-all duration-180 ease-out text-[var(--color-text)] bg-[linear-gradient(180deg,rgba(247,244,238,0.075),rgba(247,244,238,0.025))] shadow-[inset_0_1px_0_rgba(255,255,255,0.055)] hover:text-[#080808] hover:border-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:shadow-[0_16px_40px_rgba(255,61,18,0.22)] hover:-translate-y-[2px] focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] focus-visible:outline-offset-4"
         href={links.linkedin}
         target="_blank"
         rel="noreferrer"
         aria-label="Ver LinkedIn de Samuel Huaccha"
       >
-        <span class="hero-button__icon" style="--icon: url('/logos/linkedin.svg')" aria-hidden="true"></span>
+        <span class="w-[18px] h-[18px] flex-none bg-current transition-all duration-180 ease-out [mask:var(--icon)_center/contain_no-repeat] [-webkit-mask:var(--icon)_center/contain_no-repeat] group-hover:-translate-y-[1px] group-hover:scale-105" style="--icon: url('/logos/linkedin.svg')" aria-hidden="true"></span>
         <span>LinkedIn</span>
       </a>
       <a
-        class="hero-button hero-button--secondary"
+        class="group inline-flex items-center justify-center gap-[10px] min-h-[44px] md:min-h-[48px] px-[19px] border border-[rgba(247,244,238,0.22)] rounded-full font-mono text-[0.73rem] md:text-[0.75rem] font-extrabold uppercase relative overflow-hidden transition-all duration-180 ease-out text-[var(--color-text)] bg-[linear-gradient(180deg,rgba(247,244,238,0.075),rgba(247,244,238,0.025))] shadow-[inset_0_1px_0_rgba(255,255,255,0.055)] hover:text-[#080808] hover:border-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:shadow-[0_16px_40px_rgba(255,61,18,0.22)] hover:-translate-y-[2px] focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] focus-visible:outline-offset-4"
         href={links.github}
         target="_blank"
         rel="noreferrer"
         aria-label="Ver GitHub de Samuel Huaccha"
       >
-        <span class="hero-button__icon" style="--icon: url('/logos/github_light.svg')" aria-hidden="true"></span>
+        <span class="w-[18px] h-[18px] flex-none bg-current transition-all duration-180 ease-out [mask:var(--icon)_center/contain_no-repeat] [-webkit-mask:var(--icon)_center/contain_no-repeat] group-hover:-translate-y-[1px] group-hover:scale-105" style="--icon: url('/logos/github_light.svg')" aria-hidden="true"></span>
         <span>GitHub</span>
       </a>
     </div>
@@ -90,7 +91,7 @@ const links = {
 
   <DotField
     client:visible
-    className="hero-dot-field"
+    className="hidden md:block justify-self-stretch w-full min-h-[220px] lg:min-h-[min(82vh,760px)] lg:max-h-[88vh] overflow-hidden lg:-mt-[10vh] border-t lg:border-t-0 lg:border-l border-[rgba(247,244,238,0.08)] opacity-58 lg:opacity-100 [mask-image:linear-gradient(to_bottom,transparent_0,black_20%,black_100%)] lg:[mask-image:linear-gradient(to_right,transparent_0,black_16%,black_92%,transparent_100%)]"
     aria-hidden="true"
     dotRadius={3}
     dotSpacing={16}
